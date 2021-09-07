@@ -21,7 +21,7 @@ public class BoardDetailController implements Controller{
 		BoardService service = BoardService.getInstance();
 		BoardVO board = service.boardDetail(iidx);
 		service.boardDetailHitsUpdate(iidx);
-		System.out.println("TEST!~~!!");
+		System.out.println("TEST!~~!!!!!");
 		if(board == null) {
 			request.setAttribute("result", "검색정보가 없습니다.");
 		} else {
