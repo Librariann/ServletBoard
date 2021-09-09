@@ -2,6 +2,7 @@ package service;
 
 import java.util.ArrayList;
 import java.lang.Math.*;
+import java.sql.SQLException;
 
 import dao.BoardDAO;
 import service.BoardService;
@@ -22,6 +23,7 @@ public class BoardService {
 		return list;
 	}
 	
+	
 	public int boardMainPageCount(int pagingList) {
 		int pageCount = dao.boardMainPageCount();
 		pageCount = (int) Math.ceil((double)pageCount/pagingList);
@@ -40,4 +42,5 @@ public class BoardService {
 	public void boardDetailHitsUpdate(int idx){
 		dao.boardDetailHitsUpdate(idx);
 	}
+	
 }

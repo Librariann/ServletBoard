@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.*;
+import java.sql.SQLException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.util.*;
@@ -18,7 +19,6 @@ public class FrontController extends HttpServlet {
 		list.put("/boardWrite.do", new BoardWriteController());
 		list.put("/boardDetail.do", new BoardDetailController());
 	}
-
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

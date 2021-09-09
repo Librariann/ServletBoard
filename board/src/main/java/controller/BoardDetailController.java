@@ -19,6 +19,7 @@ public class BoardDetailController implements Controller{
 		int iidx = Integer.parseInt(idx);
 		
 		BoardService service = BoardService.getInstance();
+		
 		BoardVO board = service.boardDetail(iidx);
 		service.boardDetailHitsUpdate(iidx);
 		
