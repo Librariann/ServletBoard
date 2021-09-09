@@ -18,17 +18,18 @@ public class BoardService {
 		return service;
 	}
 	
-	public ArrayList<BoardVO> boardMain(int pagingStart, int pagingList){
-		ArrayList<BoardVO> list = dao.boardMain(pagingStart, pagingList);
+	public BoardVO boardMain(){
+		BoardVO list = dao.boardMain();
 		return list;
 	}
 	
-	
+	/*
 	public int boardMainPageCount(int pagingList) {
 		int pageCount = dao.boardMainPageCount();
 		pageCount = (int) Math.ceil((double)pageCount/pagingList);
 		return pageCount;
 	}
+	
 	
 	public void boardWrite(BoardVO board) {
 		dao.boardWrite(board);
@@ -42,5 +43,6 @@ public class BoardService {
 	public void boardDetailHitsUpdate(int idx){
 		dao.boardDetailHitsUpdate(idx);
 	}
+	*/
 	
 }
