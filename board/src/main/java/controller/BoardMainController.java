@@ -30,7 +30,6 @@ public class BoardMainController implements Controller{
 			System.out.println("에러 : "+ex);
 		} 
 		
-		System.out.println("TEST!!");
 		//Service 객체 메소드 호출
 		BoardService service = BoardService.getInstance();
 		ArrayList<BoardVO> list = service.boardMain(pagingStart,pagingList);
