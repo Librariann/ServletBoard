@@ -18,7 +18,7 @@ public class BoardMainController implements Controller{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		int pagingStart = 0; //페이징스타트
-		int pagingList = 3;	//한페이지에 나오는 게시물갯수
+		int pagingList = 5;	//한페이지에 나오는 게시물갯수
 		int pageNum = 0; //현재 페이지 넘버
 		
 		try {

@@ -33,10 +33,10 @@ public class BoardWriteController implements Controller{
 		
 		//Service 객체 메소드 호출
 		BoardService service = BoardService.getInstance();
-		//service.boardWrite(board);
+		service.boardWrite(board);
 		
 		//ouput view 페이지 이동
-		request.setAttribute("", board_title);
+		request.setAttribute("board_title", board_title);
 		HttpUtil.forward(request, response, "result/boardWriteOutput.jsp");
 	}
 }

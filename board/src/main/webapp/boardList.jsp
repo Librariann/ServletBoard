@@ -51,7 +51,7 @@
 	%>
 	</table>
 	<br />
-	<div style="margin-left:40px">
+	<div style="margin-left:25px">
 	<%
 		if(pageNum < 2)
 		{

@@ -75,4 +75,18 @@ public class BoardDAO {
 	        sqlSession.close();
 	    }
 	}
+	
+	public void boardWrite(BoardVO board) {
+		try {
+	    	sqlSession = factory.openSession();  // 세션 열기
+	    	int insertSuc = sqlSession.insert("dev.boardInsert", board);
+	    	if(insertSuc > 0) {
+	    		sqlSession.commit();
+    		}else {
+    			sqlSession.rollback();
+    		}
+	    } finally {
+	        sqlSession.close();
+	    }
+	}
 }

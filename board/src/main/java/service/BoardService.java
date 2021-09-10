@@ -31,11 +31,11 @@ public class BoardService {
 		return pageCount;
 	}
 	
-	/*
+	
 	public void boardWrite(BoardVO board) {
 		dao.boardWrite(board);
 	}
-	*/
+	
 	public BoardVO boardDetail(String idx){
 		BoardVO board = dao.boardDetail(idx);
 		return board;

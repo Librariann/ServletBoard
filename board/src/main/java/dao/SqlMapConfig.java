@@ -7,19 +7,12 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class SqlMapConfig {
 	private static SqlSessionFactory sqlSession;
-
-
-
 	static {
-
 		String resource = "dao/Configuration.xml";
-
 		try {
 
 			Reader reader = Resources.getResourceAsReader(resource);
-
 			sqlSession = new SqlSessionFactoryBuilder().build(reader);
-
 			reader.close();
 
 		} catch (Exception e) {
@@ -33,8 +26,6 @@ public class SqlMapConfig {
 
 
 	public static SqlSessionFactory getSqlSession() {
-
 		return sqlSession;
-
 	}
 }

@@ -18,4 +18,8 @@
 	<select id="selectCount" resultType="int">
 		SELECT count(*) as page_count FROM board;
 	</select>
+	
+	<insert id="boardInsert" parameterType="String">
+		INSERT INTO board(board_title, board_contents, board_writer, reg_id, mod_id) values(#{board_title}, #{board_contents}, #{board_writer}, #{board_writer}, #{board_writer})
+	</insert>
 </mapper>
