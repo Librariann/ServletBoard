@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -26,16 +28,22 @@ public class BoardDAO {
 
 	private SqlSession sqlSession; // mapper에 접근하기 위한 SqlSession
 
-	public List<BoardVO> boardMain() {
+	public List<BoardVO> boardMain(int pagingStart, int pagingList) {
 	    try {
 	    	sqlSession = factory.openSession();  // 세션 열기
 	        // selectList(): SELECT
 	        // 파라미터: SQLMapper의 네임 스페이스(dev) + SQL문 ID(selectList)
-	        return sqlSession.selectList("dev.selectDataAll");
+	    	Map<String, Integer> map = new HashMap<String, Integer>();
+	    	map.put("pagingStart", pagingStart);
+	    	map.put("pagingList", pagingList);
+	    	
+	        return sqlSession.selectList("dev.selectDataAll", map);
+	        
 	    } finally {
 	        sqlSession.close();
 	    }
 	}
+	
 	public BoardVO boardDetail(String idx) {
 		try {
 	    	sqlSession = factory.openSession();  // 세션 열기
@@ -54,6 +62,15 @@ public class BoardDAO {
     		}else {
     			sqlSession.rollback();
     		}
+	    } finally {
+	        sqlSession.close();
+	    }
+	}
+	
+	public int boardMainPageCount() {
+		try {
+	    	sqlSession = factory.openSession();  // 세션 열기
+	        return sqlSession.selectOne("dev.selectCount");
 	    } finally {
 	        sqlSession.close();
 	    }

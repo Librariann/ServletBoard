@@ -17,10 +17,10 @@ public class BoardMainController implements Controller{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
-		int pagingStart = 0; //페이징스타
-		int pagingList = 3;	//한페이지에 나오는 게시물갯
+		int pagingStart = 0; //페이징스타트
+		int pagingList = 3;	//한페이지에 나오는 게시물갯수
 		int pageNum = 0; //현재 페이지 넘버
-		/*
+		
 		try {
 			pageNum = Integer.parseInt(request.getParameter("pageNum"));
 			if(pageNum == 1) {
@@ -29,18 +29,20 @@ public class BoardMainController implements Controller{
 				pagingStart = (pageNum - 1) * pagingList;
 			}
 		} catch (Exception ex) {
+			System.out.println("-------MainController------");
 			System.out.println("에러 : "+ex);
+			System.out.println("-------MainController------");
 		} 
-		*/
+		
 		
 		//Service 객체 메소드 호출
 		BoardService service = BoardService.getInstance();
-		List<BoardVO> list = service.boardMain();
-		//int pageCount = service.boardMainPageCount(pagingList);
+		List<BoardVO> list = service.boardMain(pagingStart, pagingList);
+		int pageCount = service.boardMainPageCount(pagingList);
 		
 		request.setAttribute("list", list);
-		//request.setAttribute("pageCount", pageCount);
-		//request.setAttribute("pageNum", pageNum);
+		request.setAttribute("pageCount", pageCount);
+		request.setAttribute("pageNum", pageNum);
 		HttpUtil.forward(request, response, "boardList.jsp");
 	}
 }

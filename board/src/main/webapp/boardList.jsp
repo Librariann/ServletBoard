@@ -14,8 +14,8 @@
 	<h1>게시글 리스트</h1>
 	<% 
 		List<BoardVO> list = (List<BoardVO>) request.getAttribute("list"); 
-		//int pageCount = (int) request.getAttribute("pageCount");
-		//int pageNum = (int) request.getAttribute("pageNum");
+		int pageCount = (int) request.getAttribute("pageCount");
+		int pageNum = (int) request.getAttribute("pageNum");
 		if(list !=null)
 		{
 	%>
@@ -26,6 +26,8 @@
 				<td>조회수</td>
 			</tr>
 			<%
+			if(!list.isEmpty())
+			{
 				for(int i=0; i < list.size(); i++){
 				BoardVO board = list.get(i);
 			%>
@@ -36,13 +38,61 @@
 				</tr>
 			<%
 				}
+			}
+			else
+			{
+				out.print("<h3>등록된 게시글이 없습니다.</h3>");
+			}
 			%>
 				
 			
 	<%
 		}
 	%>
+	</table>
+	<br />
+	<div style="margin-left:40px">
+	<%
+		if(pageNum < 2)
+		{
+	%>
+			<a href="boardMain.do?pageNum=<%=1%>">◀</a>
+	<%
+		}
+		else
+		{
+	%>
+			<a href="boardMain.do?pageNum=<%=1%>">◁</a>
+			<a href="boardMain.do?pageNum=<%=pageNum-1%>">◀</a>
+	<%
+		}
+	%>
 			
+	<%
+		for(int j=0; j < pageCount; j++)
+		{
+	%>
+			
+			<a href="boardMain.do?pageNum=<%= j+1 %>"><%= j+1 %></a>
+			
+	<%
+		}
+	%>
+	<%
+		if(pageNum >= pageCount)
+		{
+	%>
+			<a href="boardMain.do?pageNum=<%=pageNum%>">▶</a>
+	<%
+		}
+		else
+		{
+	%>
+			<a href="boardMain.do?pageNum=<%=pageNum+1%>">▶</a>
+			<a href="boardMain.do?pageNum=<%=pageCount%>">▷</a>
+	<%
+		}
+	%>
 	</div>
 </body>
 </html>

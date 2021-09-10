@@ -14,8 +14,8 @@
 	<h1>게시글 리스트</h1>
 	<% 
 		ArrayList<BoardVO> list = (ArrayList<BoardVO>) request.getAttribute("list"); 
-		//int pageCount = (int) request.getAttribute("pageCount");
-		//int pageNum = (int) request.getAttribute("pageNum");
+		int pageCount = (int) request.getAttribute("pageCount");
+		int pageNum = (int) request.getAttribute("pageNum");
 		if(!list.isEmpty())
 		{
 	%>

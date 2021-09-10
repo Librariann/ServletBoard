@@ -3,15 +3,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dev">
-	<select id="selectDataAll" resultType="vo.BoardVO" parameterType="String">
-		SELECT idx, board_title, board_contents, board_writer, board_hits FROM board
+	<select id="selectDataAll" resultType="vo.BoardVO" parameterType="hashmap">
+		SELECT idx, board_title, board_contents, board_writer, board_hits FROM board limit #{pagingStart}, #{pagingList}
 	</select> 
 	
 	<select id="selectOne" resultType="vo.BoardVO" parameterType="String">
 		SELECT idx, board_title, board_contents, board_writer, board_hits FROM board WHERE idx=#{idx}
 	</select>
 	
-	<select id="detailHitsUpdate" resultType="vo.BoardVO" parameterType="String">
+	<update id="detailHitsUpdate" parameterType="String">
 		UPDATE board SET board_hits = board_hits+1 WHERE idx=#{idx}
+	</update>
+	
+	<select id="selectCount" resultType="int">
+		SELECT count(*) as page_count FROM board;
 	</select>
 </mapper>

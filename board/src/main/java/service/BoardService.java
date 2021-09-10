@@ -19,19 +19,19 @@ public class BoardService {
 		return service;
 	}
 	
-	public List<BoardVO> boardMain(){
-		List<BoardVO> list = dao.boardMain();
+	public List<BoardVO> boardMain(int pagingStart, int pagingList){
+		List<BoardVO> list = dao.boardMain(pagingStart, pagingList);
 		return list;
 	}
 	
-	/*
+	
 	public int boardMainPageCount(int pagingList) {
 		int pageCount = dao.boardMainPageCount();
 		pageCount = (int) Math.ceil((double)pageCount/pagingList);
 		return pageCount;
 	}
 	
-	
+	/*
 	public void boardWrite(BoardVO board) {
 		dao.boardWrite(board);
 	}
