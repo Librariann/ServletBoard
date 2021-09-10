@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="vo.BoardVO" %>
-<%@page import="java.util.ArrayList" %>
+<%@page import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,7 +13,7 @@
 	
 	<h1>게시글 리스트</h1>
 	<% 
-		BoardVO list = (BoardVO) request.getAttribute("list"); 
+		List<BoardVO> list = (List<BoardVO>) request.getAttribute("list"); 
 		//int pageCount = (int) request.getAttribute("pageCount");
 		//int pageNum = (int) request.getAttribute("pageNum");
 		if(list !=null)
@@ -25,9 +25,19 @@
 				<td>작성자</td>
 				<td>조회수</td>
 			</tr>
-			<tr>
-				<th>${list.board_title }</th>
-			</tr>
+			<%
+				for(int i=0; i < list.size(); i++){
+				BoardVO board = list.get(i);
+			%>
+				<tr>
+					<th><a href="boardDetail.do?idx=<%=board.getIdx()%>"><%=board.getBoard_title() %></a></th>
+					<td><%=board.getBoard_writer() %></td>
+					<td><%=board.getBoard_hits() %></td>
+				</tr>
+			<%
+				}
+			%>
+				
 			
 	<%
 		}

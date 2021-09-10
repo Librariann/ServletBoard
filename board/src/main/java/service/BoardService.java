@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.lang.Math.*;
 import java.sql.SQLException;
 
@@ -18,8 +19,8 @@ public class BoardService {
 		return service;
 	}
 	
-	public BoardVO boardMain(){
-		BoardVO list = dao.boardMain();
+	public List<BoardVO> boardMain(){
+		List<BoardVO> list = dao.boardMain();
 		return list;
 	}
 	
@@ -34,15 +35,15 @@ public class BoardService {
 	public void boardWrite(BoardVO board) {
 		dao.boardWrite(board);
 	}
-	
-	public BoardVO boardDetail(int idx){
+	*/
+	public BoardVO boardDetail(String idx){
 		BoardVO board = dao.boardDetail(idx);
 		return board;
 	}
 	
-	public void boardDetailHitsUpdate(int idx){
+	public void boardDetailHitsUpdate(String idx){
 		dao.boardDetailHitsUpdate(idx);
 	}
-	*/
+	
 	
 }

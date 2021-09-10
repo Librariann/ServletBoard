@@ -4,6 +4,14 @@
 
 <mapper namespace="dev">
 	<select id="selectDataAll" resultType="vo.BoardVO" parameterType="String">
-		select board_title from board where idx=3
+		SELECT idx, board_title, board_contents, board_writer, board_hits FROM board
 	</select> 
+	
+	<select id="selectOne" resultType="vo.BoardVO" parameterType="String">
+		SELECT idx, board_title, board_contents, board_writer, board_hits FROM board WHERE idx=#{idx}
+	</select>
+	
+	<select id="detailHitsUpdate" resultType="vo.BoardVO" parameterType="String">
+		UPDATE board SET board_hits = board_hits+1 WHERE idx=#{idx}
+	</select>
 </mapper>

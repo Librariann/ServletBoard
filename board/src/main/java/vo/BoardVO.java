@@ -2,18 +2,19 @@ package vo;
 import java.util.ArrayList;
 
 public class BoardVO {
-	int board_idx;
+	int idx;
 	String board_title;
 	String board_contents;
 	String board_writer;
 	int board_hits;
 	int page_count;
 	
-	public int getBoard_idx() {
-		return board_idx;
+	
+	public int getIdx() {
+		return idx;
 	}
-	public void setBoard_idx(int board_idx) {
-		this.board_idx = board_idx;
+	public void setIdx(int idx) {
+		this.idx = idx;
 	}
 	public String getBoard_title() {
 		return board_title;

@@ -16,7 +16,9 @@
 		out.print(result);
 	} else {
 %>
+	<h1>제목 : ${ board.board_title }</h1>
 	<h3>${ board.board_contents }</h3>
+	<p>조회수 : ${ board.board_hits }</p>
 <%
 	}
 %>

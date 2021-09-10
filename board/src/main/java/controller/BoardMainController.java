@@ -3,6 +3,7 @@ package controller;
 import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -34,7 +35,7 @@ public class BoardMainController implements Controller{
 		
 		//Service 객체 메소드 호출
 		BoardService service = BoardService.getInstance();
-		BoardVO list = service.boardMain();
+		List<BoardVO> list = service.boardMain();
 		//int pageCount = service.boardMainPageCount(pagingList);
 		
 		request.setAttribute("list", list);

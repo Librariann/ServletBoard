@@ -16,19 +16,20 @@ public class BoardDetailController implements Controller{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String idx = request.getParameter("idx");
-		int iidx = Integer.parseInt(idx);
+		//int iidx = Integer.parseInt(idx);
 		
 		BoardService service = BoardService.getInstance();
-		/*
-		BoardVO board = service.boardDetail(iidx);
-		service.boardDetailHitsUpdate(iidx);
+		
+		service.boardDetailHitsUpdate(idx);
+		BoardVO board = service.boardDetail(idx);
+		
 		
 		if(board == null) {
 			request.setAttribute("result", "검색정보가 없습니다.");
 		} else {
 			request.setAttribute("board", board);
 		}
-		*/
+		
 		
 		HttpUtil.forward(request, response, "result/boardDetailOutput.jsp");
 	}
